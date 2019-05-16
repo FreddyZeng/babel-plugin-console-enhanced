@@ -1,19 +1,19 @@
 {
-  "name": "babel-plugin-mark-console-position",
+  "name": "babel-plugin-console-enhanced",
   "version": "0.0.1",
   "description": "A babel plugin that helps add the position of console expression into text",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcuking/babel-plugin-mark-console-position.git"
+    "url": "git+https://github.com/mcuking/babel-plugin-console-enhanced.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mcuking/babel-plugin-mark-console-position/issues"
+    "url": "https://github.com/mcuking/babel-plugin-console-enhanced/issues"
   },
-  "homepage": "https://github.com/mcuking/babel-plugin-mark-console-position#readme",
+  "homepage": "https://github.com/mcuking/babel-plugin-console-enhanced#readme",
   "dependencies": {}
 }

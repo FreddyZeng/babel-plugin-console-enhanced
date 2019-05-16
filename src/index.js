@@ -19,7 +19,7 @@ module.exports = babel => {
   };
 
   return {
-    name: 'babel-plugin-mark-console-position',
+    name: 'babel-plugin-console-enhanced',
     visitor
   };
 };

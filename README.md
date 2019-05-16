@@ -1,2 +1,3 @@
-# babel-plugin-mark-console-position
-A babel plugin that helps add the position of console expression into text
+# babel-plugin-console-enhanced
+
+A babel plugin that helps enrich the content of console expression.
