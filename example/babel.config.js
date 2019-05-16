@@ -1,3 +1,13 @@
 module.exports = {
-  plugins: [require('../src/index')]
+  plugins: [
+    [
+      'console-enhanced',
+      {
+        addFilename: false,
+        addLine: true,
+        addColumn: false,
+        customContent: 'hello world'
+      }
+    ]
+  ]
 };

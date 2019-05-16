@@ -12,6 +12,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/preset-env": "^7.4.3",
+    "babel-plugin-console-enhanced": "0.0.2"
   }
 }
