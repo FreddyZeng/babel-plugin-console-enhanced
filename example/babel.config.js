@@ -7,7 +7,8 @@ module.exports = {
         addCodeLine: true,
         addCodeColumn: false,
         customContent: 'hello world',
-        methods: ['warn']
+        methods: ['warn', 'info'],
+        exclude: ['cool.js']
       }
     ]
   ]
