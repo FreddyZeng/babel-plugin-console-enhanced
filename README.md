@@ -37,9 +37,9 @@ Via `.babelrc.js` or `babel.config.js` or babel-loader.
 
 - `addFilename` &mdash; optional, default value is `false`, if add filename of the file contains console expression to content or not.
 
-- `addLine` &mdash; optional, default value is `false`, if add line of console expression to content or not.
+- `addLine` &mdash; optional, default value is `true`, if add line of console expression to content or not.
 
-- `addColumn` &mdash; optional, default value is `false`, if add column of console expression to content or not.
+- `addColumn` &mdash; optional, default value is `true`, if add column of console expression to content or not.
 
 - `customContent` &mdash; optional, default value is `""`, if not a null string, it will be added to the content of console expression.
 

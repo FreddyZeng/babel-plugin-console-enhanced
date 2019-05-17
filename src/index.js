@@ -1,9 +1,11 @@
-module.exports = babel => {
-  const { types: t } = babel;
+import computeOptions from './utils/pluginOption';
+import { isObject, getLastWord } from './utils/tools';
+
+export default function({ types: t }) {
   const visitor = {
     CallExpression(path) {
       if (
-        path.node.callee.type === 'MemberExpression' &&
+        t.isMemberExpression(path.node.callee) &&
         path.node.callee.object.name === 'console'
       ) {
         if (this.opts && !isObject(this.opts)) {
@@ -13,31 +15,37 @@ module.exports = babel => {
           );
         }
 
-        const filename = `filename ${getLastWord(
-          this.file.opts.filename,
-          '/'
-        )} `;
-        const line = `line ${path.node.loc.start.line}`;
-        const column = `column ${path.node.loc.start.column}`;
+        const options = computeOptions(this.opts);
+
+        let filename = this.filename || this.file.opts.filename || 'unknown';
+        filename = getLastWord(filename, '/');
+        const line = path.node.loc.start.line;
+        const column = path.node.loc.start.column;
 
         let description = '';
 
-        for (const key in this.opts) {
-          if (this.opts.hasOwnProperty(key)) {
-            const val = this.opts[key];
+        for (const key in options) {
+          if (options.hasOwnProperty(key)) {
+            const val = options[key];
             switch (key) {
               case 'addFilename':
-                description = val ? `${description}${filename}, ` : description;
+                description = val
+                  ? `${description}filename ${filename}, `
+                  : description;
                 break;
               case 'addLine':
-                description = val ? `${description}${line}, ` : description;
+                description = val
+                  ? `${description}line ${line}, `
+                  : description;
                 break;
               case 'addColumn':
-                description = val ? `${description}${column}, ` : description;
+                description = val
+                  ? `${description}column ${column}, `
+                  : description;
                 break;
               case 'customContent':
                 description = val
-                  ? `${description}${this.opts.customContent}, `
+                  ? `${description}${options.customContent}, `
                   : description;
                 break;
               default:
@@ -57,12 +65,4 @@ module.exports = babel => {
     name: 'babel-plugin-console-enhanced',
     visitor
   };
-};
-
-function getLastWord(str, separator) {
-  return str.split(separator)[str.split(separator).length - 1];
-}
-
-function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
 }
