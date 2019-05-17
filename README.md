@@ -16,35 +16,95 @@ yarn add babel-plugin-console-enhanced -D
 
 Via `.babelrc.js` or `babel.config.js` or babel-loader.
 
-```javascript
+```
 {
-  "plugins": [["console-enhanced", options]]
+  "plugins": [["babel-plugin-console-enhanced", options]]
 }
 ```
 
-### options
+## options
 
 `options` need to be an object.
 
-```javascript
+### methods
+
+The option provides control over which console statment will be added info.
+
+**Default**: ['debug', 'error', 'exception', 'info', 'log', 'warn']
+
+```
 {
-  "addFilename": false,
-  "addCodeLine": true,
-  "addCodeColumn": false,
-  "customContent": 'hello world',
-  "methods": ["warn", "log"]
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "methods": ['info', 'log']
+    }]
+  ]
 }
 ```
 
-- `addFilename` &mdash; optional, default value is `false`, if add filename of the file contains console expression to content or not.
+### addFilename
 
-- `addCodeLine` &mdash; optional, default value is `true`, if add line of console expression to content or not.
+The option provides control over if add filename into the console statement.
 
-- `addCodeColumn` &mdash; optional, default value is `true`, if add column of console expression to content or not.
+**Default**: false
 
-- `customContent` &mdash; optional, default value is `""`, if not a null string, it will be added to the content of console expression.
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "addFilename": true
+    }]
+  ]
+}
+```
 
-- `methods` &mdash; optional, default value is `['debug', 'error', 'exception', 'info', 'log', 'warn']`, if the methods is not in the methods array, nothing will be added to the console statement.
+### addCodeLine
+
+The option provides control over if add the code line of the of the console statement start.
+
+**Default**: true
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "addCodeLine": true
+    }]
+  ]
+}
+```
+
+### addCodeColumn
+
+The option provides control over if add the code column of the of the console statement start.
+
+**Default**: true
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "addCodeColumn": true
+    }]
+  ]
+}
+```
+
+### customContent
+
+The option provides control over if add custom content into the console statement. The type of custom content is string.
+
+**Default**: ''
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "customContent": true
+    }]
+  ]
+}
+```
 
 ## Example
 
