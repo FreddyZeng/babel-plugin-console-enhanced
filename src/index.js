@@ -1,5 +1,5 @@
 import computeOptions from './utils/pluginOption';
-import { isObject, getLastWord } from './utils/tools';
+import { isObject, matchesExclude } from './utils/tools';
 
 export default function({ types: t }) {
   const visitor = {
@@ -17,10 +17,15 @@ export default function({ types: t }) {
 
         const options = computeOptions(this.opts);
 
-        const filename = getLastWord(
-          this.filename || this.file.opts.filename || 'unknown',
-          '/'
-        );
+        const filename = this.filename || this.file.opts.filename || 'unknown';
+
+        if (
+          Array.isArray(options.exclude) &&
+          options.exclude.length &&
+          matchesExclude(options.exclude, filename)
+        ) {
+          return path.stop();
+        }
 
         if (!options.methods.includes(path.node.callee.property.name)) {
           return;

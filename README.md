@@ -28,7 +28,7 @@ Via `.babelrc.js` or `babel.config.js` or babel-loader.
 
 ### methods
 
-The option provides control over which console statment will be added info.
+The option provides control over which console statments are added info. `Methods` is set as an array of string.
 
 **Default**: ['debug', 'error', 'exception', 'info', 'log', 'warn']
 
@@ -37,6 +37,22 @@ The option provides control over which console statment will be added info.
   plugins: [
     ["babel-plugin-console-enhanced", {
       "methods": ['info', 'log']
+    }]
+  ]
+}
+```
+
+### exclude
+
+The option provides control over which files are added info. `Exclude` is set as an array of string.
+
+**Default**: ['node_modules']
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "exclude": ['node_modules']
     }]
   ]
 }
@@ -100,7 +116,7 @@ The option provides control over if add custom content into the console statemen
 {
   plugins: [
     ["babel-plugin-console-enhanced", {
-      "customContent": true
+      "customContent": ""
     }]
   ]
 }
