@@ -17,41 +17,33 @@ export default function({ types: t }) {
 
         const options = computeOptions(this.opts);
 
-        let filename = this.filename || this.file.opts.filename || 'unknown';
-        filename = getLastWord(filename, '/');
-        const line = path.node.loc.start.line;
-        const column = path.node.loc.start.column;
+        const filename = getLastWord(
+          this.filename || this.file.opts.filename || 'unknown',
+          '/'
+        );
+
+        if (!options.methods.includes(path.node.callee.property.name)) {
+          return;
+        }
 
         let description = '';
 
-        for (const key in options) {
-          if (options.hasOwnProperty(key)) {
-            const val = options[key];
-            switch (key) {
-              case 'addFilename':
-                description = val
-                  ? `${description}filename ${filename}, `
-                  : description;
-                break;
-              case 'addLine':
-                description = val
-                  ? `${description}line ${line}, `
-                  : description;
-                break;
-              case 'addColumn':
-                description = val
-                  ? `${description}column ${column}, `
-                  : description;
-                break;
-              case 'customContent':
-                description = val
-                  ? `${description}${options.customContent}, `
-                  : description;
-                break;
-              default:
-                break;
-            }
-          }
+        if (options.addFilename) {
+          description = `${description}filename ${filename}, `;
+        }
+
+        if (options.addCodeLine) {
+          const line = path.node.loc.start.line;
+          description = `${description}line ${line}, `;
+        }
+
+        if (options.addCodeColumn) {
+          const column = path.node.loc.start.column;
+          description = `${description}column ${column}, `;
+        }
+
+        if (options.customContent) {
+          description = `${description}${options.customContent}, `;
         }
 
         if (description) {

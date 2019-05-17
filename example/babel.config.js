@@ -1,12 +1,13 @@
 module.exports = {
   plugins: [
     [
-      'console-enhanced',
+      require('../lib/index'),
       {
-        addFilename: false,
-        addLine: true,
-        addColumn: false,
-        customContent: 'hello world'
+        addFilename: true,
+        addCodeLine: true,
+        addCodeColumn: false,
+        customContent: 'hello world',
+        methods: ['warn']
       }
     ]
   ]

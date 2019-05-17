@@ -1,8 +1,9 @@
 const defaultOptions = {
   addFilename: false,
-  addLine: true,
-  addColumn: true,
-  customContent: ''
+  addCodeLine: true,
+  addCodeColumn: true,
+  customContent: '',
+  methods: ['debug', 'error', 'exception', 'info', 'log', 'warn']
 };
 
 export default function computeOptions(userOptions = {}) {
