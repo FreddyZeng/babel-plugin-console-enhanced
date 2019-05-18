@@ -1,5 +1,12 @@
-const a = 'hello hot';
+const foo = () => {
+  function bar() {
+    console.warn('apple');
+    console.log('i am tom');
+  }
+};
 
-console.log(b);
-
-console.info(b);
+class Foo {
+  bar() {
+    console.info('banana');
+  }
+}

@@ -1,5 +1,2 @@
-const a = 'hello cool';
-
-console.log(a);
-
-console.warn(a);
+console.log('hello cool');
+console.warn('good morning');

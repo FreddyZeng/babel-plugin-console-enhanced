@@ -6,8 +6,9 @@ module.exports = {
         addFilename: true,
         addCodeLine: true,
         addCodeColumn: false,
+        addContext: true,
         customContent: 'hello world',
-        methods: ['warn', 'info'],
+        methods: ['info', 'log'],
         exclude: ['cool.js']
       }
     ]
