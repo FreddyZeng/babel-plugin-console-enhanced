@@ -1,5 +1,5 @@
 import computeOptions from './utils/pluginOption';
-import { isObject, matchesExclude } from './utils/tools';
+import { isObject, matchesExclude, computeContext } from './utils/tools';
 
 export default function({ types: t }) {
   const visitor = {
@@ -8,8 +8,8 @@ export default function({ types: t }) {
         t.isMemberExpression(path.node.callee) &&
         path.node.callee.object.name === 'console'
       ) {
+        // options need to be an object
         if (this.opts && !isObject(this.opts)) {
-          path.stop();
           return console.error(
             '[babel-plugin-console-enhanced]: options need to be an object.'
           );
@@ -19,14 +19,16 @@ export default function({ types: t }) {
 
         const filename = this.filename || this.file.opts.filename || 'unknown';
 
+        // not work on an excluded file
         if (
           Array.isArray(options.exclude) &&
           options.exclude.length &&
           matchesExclude(options.exclude, filename)
         ) {
-          return path.stop();
+          return;
         }
 
+        // not work on a non-inlcuded method
         if (!options.methods.includes(path.node.callee.property.name)) {
           return;
         }
@@ -34,17 +36,24 @@ export default function({ types: t }) {
         let description = '';
 
         if (options.addFilename) {
-          description = `${description}filename ${filename}, `;
+          description = `${description}filename: ${filename}, `;
         }
 
         if (options.addCodeLine) {
           const line = path.node.loc.start.line;
-          description = `${description}line ${line}, `;
+          description = `${description}line: ${line}, `;
         }
 
         if (options.addCodeColumn) {
           const column = path.node.loc.start.column;
-          description = `${description}column ${column}, `;
+          description = `${description}column: ${column}, `;
+        }
+
+        if (options.addContext) {
+          const scope = computeContext(path);
+          description = scope
+            ? `${description}context: ${scope}, `
+            : description;
         }
 
         if (options.customContent) {

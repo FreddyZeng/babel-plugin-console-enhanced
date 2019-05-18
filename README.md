@@ -106,6 +106,22 @@ The option provides control over if add the code column of the of the console st
 }
 ```
 
+### addContext
+
+The option provides control over if add the invocation context of the console statement.
+
+**Default**: true
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "addContext": true
+    }]
+  ]
+}
+```
+
 ### customContent
 
 The option provides control over if add custom content into the console statement. The type of custom content is string.
@@ -133,7 +149,10 @@ console.log(a);
 ### To
 
 ```javascript
-console.log('filename cool.js , line 3, column 0, hello world, ', a);
+console.log(
+  'filename: cool.js , line: 3, column: 0, context: Foo -> bar(), hello world, ',
+  a
+);
 ```
 
 ## Notes
