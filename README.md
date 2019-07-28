@@ -58,7 +58,7 @@ The option provides control over which files are added info. `Exclude` is set as
 }
 ```
 
-### addFilename
+### needFilename
 
 The option provides control over if add filename into the console statement.
 
@@ -68,13 +68,13 @@ The option provides control over if add filename into the console statement.
 {
   plugins: [
     ["babel-plugin-console-enhanced", {
-      "addFilename": true
+      "needFilename": true
     }]
   ]
 }
 ```
 
-### addCodeLine
+### needLineNo
 
 The option provides control over if add the code line of the of the console statement start.
 
@@ -84,13 +84,13 @@ The option provides control over if add the code line of the of the console stat
 {
   plugins: [
     ["babel-plugin-console-enhanced", {
-      "addCodeLine": true
+      "needLineNo": true
     }]
   ]
 }
 ```
 
-### addCodeColumn
+### needColumnNo
 
 The option provides control over if add the code column of the of the console statement start.
 
@@ -100,13 +100,13 @@ The option provides control over if add the code column of the of the console st
 {
   plugins: [
     ["babel-plugin-console-enhanced", {
-      "addCodeColumn": true
+      "needColumnNo": true
     }]
   ]
 }
 ```
 
-### addContext
+### needContext
 
 The option provides control over if add the invocation context of the console statement.
 
@@ -116,7 +116,7 @@ The option provides control over if add the invocation context of the console st
 {
   plugins: [
     ["babel-plugin-console-enhanced", {
-      "addContext": true
+      "needContext": true
     }]
   ]
 }

@@ -35,21 +35,29 @@ export default function({ types: t }) {
 
         let description = '';
 
-        if (options.addFilename) {
+        if (options.needFilename) {
           description = `${description}filename: ${filename}, `;
         }
 
-        if (options.addCodeLine) {
-          const line = path.node.loc.start.line;
-          description = `${description}line: ${line}, `;
+        if (options.needLineNo) {
+          const line = path.node.loc
+            ? path.node.loc.start
+              ? path.node.loc.start.line
+              : undefined
+            : undefined;
+          description = `${description}lineNo: ${line}, `;
         }
 
-        if (options.addCodeColumn) {
-          const column = path.node.loc.start.column;
-          description = `${description}column: ${column}, `;
+        if (options.needColumnNo) {
+          const column = path.node.loc
+            ? path.node.loc.start
+              ? path.node.loc.start.column
+              : undefined
+            : undefined;
+          description = `${description}columnNo: ${column}, `;
         }
 
-        if (options.addContext) {
+        if (options.needContext) {
           const scope = computeContext(path);
           description = scope
             ? `${description}context: ${scope}, `

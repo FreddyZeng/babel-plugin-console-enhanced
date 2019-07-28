@@ -3,10 +3,10 @@ module.exports = {
     [
       require('../lib/index'),
       {
-        addFilename: true,
-        addCodeLine: true,
-        addCodeColumn: false,
-        addContext: true,
+        needFilename: true,
+        needLineNo: true,
+        needColumnNo: false,
+        needContext: true,
         customContent: 'hello world',
         methods: ['info', 'log'],
         exclude: ['cool.js']

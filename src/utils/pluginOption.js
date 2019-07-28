@@ -1,8 +1,8 @@
 const defaultOptions = {
-  addFilename: false,
-  addCodeLine: true,
-  addCodeColumn: true,
-  addContext: false,
+  needFilename: false,
+  needLineNo: true,
+  needColumnNo: true,
+  needContext: false,
   customContent: '',
   methods: ['debug', 'error', 'exception', 'info', 'log', 'warn'],
   exclude: ['node_modules']
