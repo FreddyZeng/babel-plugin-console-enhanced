@@ -1,5 +1,5 @@
 import computeOptions from './utils/pluginOption';
-import { isObject, matchesExclude, computeContext } from './utils/tools';
+import { isObject, matchesFile, computeContext } from './utils/tools';
 
 export default function({ types: t }) {
   const visitor = {
@@ -19,11 +19,20 @@ export default function({ types: t }) {
 
         const filename = this.filename || this.file.opts.filename || 'unknown';
 
-        // not work on an excluded file
+        // not work on excluded files, and exclude is proiority other than include
         if (
           Array.isArray(options.exclude) &&
           options.exclude.length &&
-          matchesExclude(options.exclude, filename)
+          matchesFile(options.exclude, filename)
+        ) {
+          return;
+        }
+
+        // just work on included files
+        if (
+          Array.isArray(options.include) &&
+          options.include.length &&
+          !matchesFile(options.include, filename)
         ) {
           return;
         }

@@ -2,7 +2,7 @@ export function isObject(obj) {
   return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
-export function matchesExclude(patterns = ['node_modules'], filename) {
+export function matchesFile(patterns, filename) {
   return patterns.some(pattern => filename.includes(pattern));
 }
 
