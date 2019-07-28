@@ -1,11 +1,12 @@
 const defaultOptions = {
   needFilename: false,
   needLineNo: true,
-  needColumnNo: true,
+  needColumnNo: false,
   needContext: false,
   customContent: '',
   methods: ['debug', 'error', 'exception', 'info', 'log', 'warn'],
-  exclude: ['node_modules']
+  exclude: ['node_modules'],
+  include: []
 };
 
 export default function computeOptions(userOptions = {}) {

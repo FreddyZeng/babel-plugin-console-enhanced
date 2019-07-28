@@ -44,9 +44,25 @@ The option provides control over which console statments are added info. `Method
 
 ### exclude
 
-The option provides control over which files are added info. `Exclude` is set as an array of string.
+The option determines that the plugin doesn't take effect in the excluded file. `Exclude` is set as an array of string.
 
 **Default**: ['node_modules']
+
+```
+{
+  plugins: [
+    ["babel-plugin-console-enhanced", {
+      "exclude": ['node_modules']
+    }]
+  ]
+}
+```
+
+### include
+
+The option determines that the plugin takes effect in the excluded file. `Exclude` is set as an array of string.
+
+**Default**: []
 
 ```
 {
@@ -94,7 +110,7 @@ The option provides control over if add the code line of the of the console stat
 
 The option provides control over if add the code column of the of the console statement start.
 
-**Default**: true
+**Default**: false
 
 ```
 {
@@ -153,15 +169,4 @@ console.log(
   'filename: cool.js , line: 3, column: 0, context: Foo -> bar(), hello world, ',
   a
 );
-```
-
-## Notes
-
-If you want to use this plugin via `.babelrc`, it should be configured in `.babelrc.js`.
-And `.babelrc` should be like this:
-
-```javascript
-{
-  "presets": ["./.babelrc.js"]
-}
 ```
