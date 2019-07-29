@@ -1,5 +1,5 @@
-import computeOptions from './utils/pluginOption';
-import { isObject, matchesFile, computeContext } from './utils/tools';
+import { computeOptions, defaultOptions } from './utils/pluginOption';
+import { isObject, matchesFile, computeContext, toArray } from './utils/tools';
 
 export default function({ types: t }) {
   const visitor = {
@@ -15,7 +15,10 @@ export default function({ types: t }) {
           );
         }
 
-        const options = computeOptions(this.opts);
+        if (this.opts.exclude) this.opts.exclude = toArray(this.opts.exclude);
+        if (this.opts.include) this.opts.include = toArray(this.opts.include);
+
+        const options = computeOptions(defaultOptions, this.opts);
 
         const filename = this.filename || this.file.opts.filename || 'unknown';
 

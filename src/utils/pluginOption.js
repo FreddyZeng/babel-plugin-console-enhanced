@@ -1,14 +1,14 @@
-const defaultOptions = {
-  needFilename: false,
+export const defaultOptions = {
+  expression: 'console.log',
+  needFilename: true,
   needLineNo: true,
   needColumnNo: false,
-  needContext: false,
-  customContent: '',
-  methods: ['debug', 'error', 'exception', 'info', 'log', 'warn'],
+  needContext: true,
   exclude: ['node_modules'],
   include: []
 };
 
-export default function computeOptions(userOptions = {}) {
+/* Combines default options and user options */
+export function computeOptions(defaultOptions, userOptions = {}) {
   return Object.assign({}, defaultOptions, userOptions);
 }
