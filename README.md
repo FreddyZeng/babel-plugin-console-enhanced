@@ -16,7 +16,7 @@ yarn add babel-plugin-console-enhanced -D
 
 Via `.babelrc.js` or `babel.config.js` or babel-loader.
 
-```
+```javascript
 {
   "plugins": [["babel-plugin-console-enhanced", options]]
 }
@@ -32,13 +32,16 @@ The option provides control over which console statments are added info. `Method
 
 **Default**: ['debug', 'error', 'exception', 'info', 'log', 'warn']
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "methods": ['info', 'log']
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        methods: ['info', 'log']
+      }
+    ]
+  ];
 }
 ```
 
@@ -48,13 +51,16 @@ The option determines that the plugin doesn't take effect in the excluded file. 
 
 **Default**: ['node_modules']
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "exclude": ['node_modules']
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        exclude: ['node_modules']
+      }
+    ]
+  ];
 }
 ```
 
@@ -64,13 +70,16 @@ The option determines that the plugin takes effect in the excluded file. `Exclud
 
 **Default**: []
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "exclude": ['node_modules']
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        exclude: ['node_modules']
+      }
+    ]
+  ];
 }
 ```
 
@@ -80,13 +89,16 @@ The option provides control over if add filename into the console statement.
 
 **Default**: false
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "needFilename": true
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        needFilename: true
+      }
+    ]
+  ];
 }
 ```
 
@@ -96,13 +108,16 @@ The option provides control over if add the code line of the of the console stat
 
 **Default**: true
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "needLineNo": true
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        needLineNo: true
+      }
+    ]
+  ];
 }
 ```
 
@@ -112,13 +127,16 @@ The option provides control over if add the code column of the of the console st
 
 **Default**: false
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "needColumnNo": true
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        needColumnNo: true
+      }
+    ]
+  ];
 }
 ```
 
@@ -128,13 +146,16 @@ The option provides control over if add the invocation context of the console st
 
 **Default**: true
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "needContext": true
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        needContext: true
+      }
+    ]
+  ];
 }
 ```
 
@@ -144,13 +165,39 @@ The option provides control over if add custom content into the console statemen
 
 **Default**: ''
 
-```
+```javascript
 {
   plugins: [
-    ["babel-plugin-console-enhanced", {
-      "customContent": ""
-    }]
-  ]
+    [
+      'babel-plugin-console-enhanced',
+      {
+        customContent: ''
+      }
+    ]
+  ];
+}
+```
+
+### windowProperty
+
+The option provides control over add properties of window object into the console statement.
+
+**Default**: []
+
+```javascript
+{
+  plugins: [
+    [
+      'babel-plugin-console-enhanced',
+      {
+        windowProperty: [
+          'window.location.href',
+          'perfomance.timing',
+          'navigator.userAgent'
+        ]
+      }
+    ]
+  ];
 }
 ```
 

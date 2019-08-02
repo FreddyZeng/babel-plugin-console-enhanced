@@ -8,6 +8,11 @@ module.exports = {
         needColumnNo: false,
         needContext: true,
         customContent: 'hello world',
+        windowProperty: [
+          'window.location.href',
+          'perfomance.timing',
+          'navigator.userAgent'
+        ],
         methods: ['info', 'log'],
         exclude: ['cool.js']
       }

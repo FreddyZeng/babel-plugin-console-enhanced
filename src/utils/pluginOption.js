@@ -4,6 +4,7 @@ export const defaultOptions = {
   needLineNo: true,
   needColumnNo: false,
   needContext: true,
+  windowProperty: [],
   exclude: ['node_modules'],
   include: []
 };

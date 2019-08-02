@@ -17,6 +17,8 @@ export default function({ types: t }) {
 
         if (this.opts.exclude) this.opts.exclude = toArray(this.opts.exclude);
         if (this.opts.include) this.opts.include = toArray(this.opts.include);
+        if (this.opts.windowProperty)
+          this.opts.windowProperty = toArray(this.opts.windowProperty);
 
         const options = computeOptions(defaultOptions, this.opts);
 
@@ -78,6 +80,18 @@ export default function({ types: t }) {
 
         if (options.customContent) {
           description = `${description}${options.customContent}, `;
+        }
+
+        if (
+          Array.isArray(options.windowProperty) &&
+          options.windowProperty.length
+        ) {
+          options.windowProperty.forEach(propName => {
+            if (!propName.startsWith('window.')) {
+              propName = `window.${propName}`;
+            }
+            path.node.arguments.unshift(t.identifier(propName));
+          });
         }
 
         if (description) {
